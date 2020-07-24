@@ -53,19 +53,21 @@ class Toast {
 
     //如果type是Toast.KEEP, delay不生效
     static create(message, type = Toast.NORMAL, delay = 2000) {
+        //創造基礎toast
         let ref = $(`<div class="toast">&nbsp;&nbsp;${message}</div>`);
+        //依照類型塞入class
         switch (type) {
             case Toast.NORMAL:
                 ref.addClass('toast-normal');
                 break;
             case Toast.KEEP:
                 ref.addClass('toast-keep');
+                //加入關閉按鈕
                 let close = $('<div class="toast-close-btn"><i class="fas fa-times"></i></div>');
                 close.click(function () {
                     Toast.fadeOut(ref, 0);
                 });
                 ref.append(close);
-
                 break;
             case Toast.SUCCESS:
                 ref.addClass('toast-success');
@@ -78,7 +80,7 @@ class Toast {
                 break;
         }
 
-        if (type != Toast.KEEP) {
+        if (type != Toast.KEEP) { //類型是Toast.KEEP，不執行fadeOut
             Toast.fadeOut(ref, delay);
         }
 
