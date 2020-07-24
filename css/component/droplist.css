@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+.drop-item {
+    width: 100%;
+}
+
 .dropdown {
     position: relative;
 }

@@ -3,17 +3,32 @@
     border-bottom: #666666 solid 2px;
     color: #666666;
     outline: none;
-    margin: 10px;
+    margin: 5px 0;
 }
 
 .input-box:focus {
-    border-color: #7cb07c;
-    caret-color: rgb(99, 156, 99);
-    cursor: cell;
-    color: #378a37;
+    border-color: #999999;
+    caret-color: #999999;
+    color: #999999;
 }
 
 .input-box:hover {
-    border-color: #7cb07c;
+    border-color: #999999;
 }
 
+.input-label {
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+@media screen and (max-width: 380px) {
+    .input-box, .input-label {
+        width: 70vw;
+    }
+}

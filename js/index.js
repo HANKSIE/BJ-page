@@ -27,11 +27,9 @@ $('.drop-btn').click(function (e) {
     dropList.slideToggle();
 });
 
-if ($('.nav-fixed').length > 0) {
-    $('.nav-fixed').each(function (index, el) {
-        let h = $(el).css('height');
-        let w = $(el).css('width');
-        let keep = `<div style="width:${w};height:${h};"></div>`;
-        $(keep).insertBefore(el); //填充fixed原本的位置
-    });
-}
+$('.nav-fixed').each(function (index, el) {
+    let h = $(el).css('height');
+    let w = $(el).css('width');
+    let keep = `<div style="width:${w};height:${h};"></div>`;
+    $(keep).insertBefore(el); //填充fixed原本的位置
+});

@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+.nav a, .nav-fixed a {
+    text-decoration: none;
+}
+
 .nav-fixed {
     position: fixed;
     top: 0;
@@ -13,7 +17,7 @@
 
 .nav-item, .nav-logo {
     padding: 20px 1.5vw;
-    color: white;
+    color: #EEEEEE;
     font-size: 20px;
 }
 
@@ -51,6 +55,7 @@
         box-shadow: 0 3px 5px #CCCCCC;
         overflow-y: scroll;
         overflow-x: hidden;
+        max-height: 70vh;
     }
 
     .nav-item {
