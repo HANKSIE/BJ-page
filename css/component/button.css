@@ -1,7 +1,8 @@
 .submit {
     border: none;
     outline: none;
-    border-radius: 7px;
+    padding: 5px 20px;
+    font-size: 23px;
     background-color: transparent;
-    margin: 30px;
+    cursor: pointer;
 }

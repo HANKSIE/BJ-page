@@ -3,3 +3,7 @@
 @import "./normalize.css";
 @import "./initialize.css";
 @import "./effect.css";
+
+@import "./master.css";
+@import "./login.css";
+@import "./profile.css";

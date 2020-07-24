@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/master.css">
-    <script defer src="../js/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
+    <!-- <link rel="stylesheet" href="../css/master.css"> -->
     <title>BYJT</title>
 </head>
 
 <body>
-    <nav class="nav-fixed box-shadow-gray-2">
+    <!-- 顯示toast的區塊 -->
+    <div id="toast-panel"></div>
+    <nav class="nav-fixed">
         <div class="nav-logo">
             BYJT
         </div>
@@ -28,15 +27,23 @@
                 <a href="">
                     <div class="nav-item">聯絡我們</div>
                 </a>
-                <a href="">
-                    <div class="nav-item">貼文</div>
-                </a>
+                <div class="dropdown">
+                    <div class=" drop-btn nav-item">貼文</div>
+                    <div class="drop-list">
+                        <a href="">
+                            <div class="nav-item">分類</div>
+                        </a>
+                        <a href="">
+                            <div class="nav-item">新增貼文</div>
+                        </a>
+                    </div>
+                </div>
                 <a href="">
                     <div class="nav-item">商城</div>
                 </a>
                 <div class="dropdown">
                     <div class=" drop-btn nav-item">106021014</div>
-                    <div class="drop-list box-shadow-gray-2">
+                    <div class="drop-list">
                         <a href="">
                             <div class="nav-item">帳號設定</div>
                         </a>
@@ -59,31 +66,57 @@
     </nav>
     <main class="main">
         <!-- 主內容 -->
-
         <form action="" class="vc-container">
             <div class="input-group">
-                <div class="input-label"><i class="fas fa-pen"></i>&nbsp;&nbsp;暱稱</div>
+                <div class="input-label">email</div>
+                <input type="text" class="input-box" readonly title="不可修改註冊信箱" value="kkuuccff@gmail.com">
+            </div>
+            <div class="input-group">
+                <div class="input-label">暱稱</div>
                 <input type="text" class="input-box">
             </div>
             <div class="input-group">
-                <div class="input-label"><i class="fas fa-envelope"></i>&nbsp;&nbsp;信箱</div>
-                <input type="email" class="input-box">
-            </div>
-            <div class="input-group">
-                <div class="input-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;密碼</div>
+                <div class="input-label">電話</div>
                 <input type="password" class="input-box">
             </div>
             <div class="input-group">
-                <div class="input-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;確認密碼</div>
+                <div class="input-label">生日</div>
                 <input type="password" class="input-box">
             </div>
-            <input type="submit" class="submit" value="註冊">
+            <div class="input-group">
+                <div class="input-label">地址</div>
+                <input type="password" class="input-box">
+            </div>
+            <div class="input-group">
+                <input type="submit" class="submit" value="修改">
+            </div>
         </form>
+        <span id="alter-pwd-btn">修改密碼</span>
+        <div style="position: fixed; margin: auto;">
+            <form action="" id="alter-form" class="vc-container">
+                <span id="close" class="alt-submit">
+                    <img src="https://img.icons8.com/fluent/48/000000/close-window.png" />
+                </span>
+                <div class="input-group">
+                    <div class="input-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;新密碼</div>
+                    <input type="password" class="input-box">
+                </div>
+                <div class="input-group">
+                    <div class="input-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;確認密碼</div>
+                    <input type="password" class="input-box">
+                </div>
+                <div class="input-group">
+                    <input type="submit" class="submit alt-submit" value="修改">
+                </div>
+            </form>
+        </div>
     </main>
-
     <footer class="footer">
         Copyright © 2020 BYJT
     </footer>
+    <script defer src="../js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
 </body>
 
 </html>

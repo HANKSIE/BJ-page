@@ -3,7 +3,9 @@
     position: absolute;
     z-index: 1;
     background-color: #444444;
-    width: 100%;
+    min-width: 100%;
+    box-shadow: 0 3px 5px #CCCCCC;
+    white-space: nowrap;
 }
 
 .drop-item {
@@ -19,4 +21,9 @@
         width: 100%;
     }
     
+    .drop-list {
+        position: static;
+        box-shadow: none;
+        background-color: #4d4d4d;
+    }
 }

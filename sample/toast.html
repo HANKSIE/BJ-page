@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
+<link rel="stylesheet" href="../css/component/toast.css">
+
+<div id="toast-panel" style="height: 100vh;">
+</div>
+<div id="toast-panel-left" style="height: 100vh;">
+</div>
+<div id="toast-panel-right" style="height: 100vh;">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
+<script>
+    //toast
+
+    class Toast {
+
+        static NORMAL = 0;
+
+        static KEEP = 1;
+
+        static SUCCESS = 2;
+
+        static FAIL = 3;
+
+        //如果type是Toast.KEEP, delay不生效
+        static create(message, type = Toast.NORMAL, delay = 2000) {
+            let ref = $(`<div class="toast">&nbsp;&nbsp;${message}</div>`);
+            switch (type) {
+                case Toast.NORMAL:
+                    ref.addClass('toast-normal');
+                    break;
+                case Toast.KEEP:
+                    ref.addClass('toast-keep');
+                    let close = $('<div class="toast-close-btn"><i class="fas fa-times"></i></div>');
+                    close.click(function () {
+                        Toast.fadeOut(ref, 0);
+                    });
+                    ref.append(close);
+
+                    break;
+                case Toast.SUCCESS:
+                    ref.addClass('toast-success');
+                    break;
+                case Toast.FAIL:
+                    ref.addClass('toast-fail');
+                    break;
+                default:
+                    ref.addClass('toast-normal');
+                    break;
+            }
+
+            if (type != Toast.KEEP) {
+                Toast.fadeOut(ref, delay);
+            }
+
+            return ref;
+        }
+
+        static fadeOut(ref, delay) {
+            setTimeout(() => {
+                let interval = setInterval(() => {
+                    if (ref.css('opacity') > 0) {
+                        ref.css('opacity', ref.css('opacity') - 0.1);
+                    } else {
+                        ref.remove();
+                        clearInterval(interval);
+                    }
+                }, 50);
+            }, delay)
+        }
+
+    }
+
+    //demo
+    $('#toast-panel').append(Toast.create('一般提示框', Toast.NORMAL));
+    setTimeout(function () {
+        $('#toast-panel').append(Toast.create('成功', Toast.SUCCESS));
+    }, 1000);
+    setTimeout(function () {
+        $('#toast-panel').append(Toast.create('失敗', Toast.FAIL));
+    }, 2000);
+    setTimeout(function () {
+        $('#toast-panel').append(Toast.create('我不會消失，除非你按下右上角的X', Toast.KEEP));
+    }, 3000);
+</script>
