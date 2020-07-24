@@ -7,13 +7,9 @@
 }
 
 .input-box:focus {
-    border-color: #999999;
-    caret-color: #999999;
-    color: #999999;
-}
-
-.input-box:hover {
-    border-color: #999999;
+    border-color: #222222;
+    caret-color: #222222;
+    color: #222222;
 }
 
 .input-label {
