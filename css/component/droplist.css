@@ -1,0 +1,18 @@
+.drop-list {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #444444;
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+}
+
+@media screen and (max-width: 600px) {
+    .dropdown {
+        width: 100%;
+    }
+    
+}

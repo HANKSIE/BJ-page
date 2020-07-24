@@ -1,0 +1,21 @@
+/*垂直置中*/
+.vc-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*水平置右*/
+.hr-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.full-container {
+    height: 100%;
+    width: 100%;
+}
+
+

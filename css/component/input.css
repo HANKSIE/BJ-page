@@ -1,0 +1,19 @@
+.input-box {
+    border: none;
+    border-bottom: #666666 solid 2px;
+    color: #666666;
+    outline: none;
+    margin: 10px;
+}
+
+.input-box:focus {
+    border-color: #7cb07c;
+    caret-color: rgb(99, 156, 99);
+    cursor: cell;
+    color: #378a37;
+}
+
+.input-box:hover {
+    border-color: #7cb07c;
+}
+
