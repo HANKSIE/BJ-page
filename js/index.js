@@ -30,17 +30,7 @@ $('.nav-fixed').each(function (index, el) {
     $(keep).insertBefore(el); //填充fixed原本的位置
 });
 
-//修改密碼按鈕切換修改密碼表單顯示/隱藏
-$('#alter-pwd-btn').click(function () {
-    $('#alter-form').fadeToggle('slow');
-});
-
-$('#close').click(function () {
-    $('#alter-form').fadeOut('slow');
-});
-
 //toast
-
 class Toast {
 
     static NORMAL = 0;
@@ -51,24 +41,96 @@ class Toast {
 
     static WARN = 3;
 
+    static viewHandle = {
+        enable() {
+            $(document.body).css('pointer-events', 'initial');
+        },
+
+        disable() {
+            $(document.body).css('pointer-events', 'none');
+        }
+    }
+
+    static confirm(config, okHandle = function () { }, cancelHandle = function () { }) {
+        config = Object.assign(Toast.createConfirmDefaultConfig(), config);
+
+        let ref = $(`<div class="toast confirm"><div class='confirm-msg'>${config.message}</div></div>`);
+
+        let cancel = $(`<div class="confirm-cancel-btn">${config.cancel}</div>`);
+        cancel.click(function () {
+
+            cancel.unbind('click'); //解除綁定事件
+
+            ref.fadeOut(300, () => {
+                ref.remove();
+            });
+
+            Toast.viewHandle.enable();
+            cancelHandle();
+        });
+
+        let ok = $(`<div class="confirm-ok-btn">${config.ok}</div>`);
+        ok.click(function () {
+
+            ok.unbind('click'); //解除綁定事件
+
+            ref.fadeOut(300, () => {
+                ref.remove();
+
+            });
+
+            Toast.viewHandle.enable();
+            okHandle();
+
+        });
+
+        let btnGroup = $('<div class="confirm-btn-group"></div>').append(ok, cancel)
+
+        ref.append(btnGroup);
+        //右上角關閉按鈕
+        let close = $('<div class="confirm-close-btn"><i class="fas fa-times"></i></div>');
+        close.click(function () {
+            ref.fadeOut(500, () => {
+                ref.remove();
+                Toast.viewHandle.enable();
+            });
+        });
+        ref.append(close);
+
+        //隱藏後淡入
+        ref.hide();
+        ref.fadeIn('slow');
+
+        Toast.viewHandle.disable();
+        config.parent.append(ref);
+    }
+
+    static createConfirmDefaultConfig() { //回傳預設值
+        return {
+            message: '',
+            ok: '確定',
+            cancel: '取消',
+            parent: $('#confirm-panel')
+        };
+    }
+
     static createDefaultConfig() { //回傳預設值
         return {
             message: '',
             type: Toast.NORMAL,
-            delay: 1500,
+            delay: 3000,
             close: false,
         }
     }
 
-    //如果type是Toast.KEEP, delay不生效
-    static create(setting) {
+    static create(config) {
 
-        setting = Object.assign(Toast.createDefaultConfig(), setting);
+        config = Object.assign(Toast.createDefaultConfig(), config);
 
         //創造基礎toast
-        let ref = $(`<div class="toast"><div class='toast-msg'>${setting.message}</div></div>`);
+        let ref = $(`<div class="toast"><div class='toast-msg'>${config.message}</div></div>`);
         //依照類型塞入class
-        switch (setting.type) {
+        switch (config.type) {
             case Toast.NORMAL:
                 ref.addClass('toast-normal');
                 break;
@@ -89,7 +151,7 @@ class Toast {
                 break;
         }
 
-        if (setting.type == Toast.KEEP || setting.close == true) {
+        if (config.close == true) {
             //加入關閉按鈕
             let close = $('<div class="toast-close-btn"><i class="fas fa-times"></i></div>');
             close.click(function () {
@@ -97,8 +159,12 @@ class Toast {
             });
             ref.append(close);
         } else {
-            Toast.fadeOut(ref, setting.delay);
+            Toast.fadeOut(ref, config.delay);
         }
+
+        //隱藏後淡入
+        ref.hide();
+        ref.fadeIn('slow');
 
         return ref;
     }
@@ -106,14 +172,10 @@ class Toast {
     static fadeOut(ref, delay) {
 
         setTimeout(() => { //delay毫秒後才開始動畫
-            ref.animate({ opacity: 0 }, 800); //(delay + 1000)毫秒後變透明
-            setTimeout(() => { //(delay + 800)毫秒後高度縮小
-                let minify = 500;
-                ref.animate({ height: 0, padding: 0, margin: 0 }, minify);
-                setTimeout(() => {
+            ref.animate({ opacity: 0 }, 800)
+                .slideUp(500, () => {
                     ref.remove();
-                }, minify + 500); //延遲消除dom
-            }, 600);
+                });
         }, delay)
     }
 
@@ -121,15 +183,25 @@ class Toast {
 
 //demo
 function launchToast() {
+    Toast.confirm({
+        message: 'Confirm Message',
+        ok: '確定',
+        cancel: '取消',
+    }, function () {
+        console.log('ok');
+    }, function () {
+        console.log('cancel');
+    });
+
     $('#toast-panel').append(Toast.create({
         message:
             "\
             Toast說明: Toast類型有Toast.NORMAL\
             Toast.SUCCESS, Toast.WARN, Toast.FAIL,\
-            要創建一個新的Toast使用Toast.create(setting),\
+            要創建一個新的Toast使用Toast.create(config),\
             並將Toast.create()回傳的DOM插入欲顯示toast之dom\
             ex:(div class=\"toast-panel\")\
-            setting類型為object，屬性介紹:\
+            config類型為object，屬性介紹:\
             message:text=>文字內容,\
             type:int=>Toast.[類型], \
             delay:int => delay毫秒後執行消失動畫\
@@ -152,5 +224,88 @@ function launchToast() {
     }, 4000);
 }
 
+launchToast();
+//pop window
+class PopWindow {
+
+    static ANIMATE = Object.freeze({
+        FADE: 1,
+        ZOOM: 2,
+    });
+
+    static createDefaultConfig() { //回傳預設值
+        return {
+            btnID: '',
+            popID: '',
+            animate: PopWindow.ANIMATE.FADE,
+            delay: 300
+        };
+    }
+
+    static register(config) {
+
+        config = Object.assign(PopWindow.createDefaultConfig(), config);
+
+        let btn = $(`#${config.btnID}`);
+        let pop = $(`#${config.popID}`);
+
+        let close = pop.find('.pop-window-close-btn').first();
+
+        let animate = PopWindow.createAnimate(config.animate, pop);
+        ;
+        close.click(() => {
+            animate.out(config.delay);
+        });
+        btn.click(() => {
+            if (pop.css('display') == 'none') {
+                animate.in(config.delay);
+            } else {
+                animate.out(config.delay);
+            }
+        });
+    }
+
+    static createAnimate(animate, pop) {
+        switch (animate) {
+            case PopWindow.ANIMATE.FADE:
+                return {
+                    in: function (delay) {
+                        pop.fadeIn(delay);
+                    },
+                    out: function (delay) {
+                        pop.fadeOut(delay);
+                    }
+                };
+            case PopWindow.ANIMATE.ZOOM:
+                let origin = pop.css(['height', 'padding']);
+                return {
+                    in: function (delay) {
+                        pop.show();
+                        pop.css({ 'height': 0, 'padding': 0 });
+                        pop.animate(origin, delay);
+                    },
+                    out: function (delay) {
+                        pop.animate({ height: 0, padding: 0 }, delay, function () {
+                            pop.hide();
+                        });
+                    }
+                };
+            default:
+                return {
+                    in: function (delay) {
+                        pop.fadeIn(delay);
+                    },
+                    out: function (delay) {
+                        pop.fadeOut(delay);
+                    }
+                };
+        }
+    }
+}
+
+PopWindow.register({
+    btnID: 'alter-pwd-btn',
+    popID: 'alter-pop',
+});
 
 

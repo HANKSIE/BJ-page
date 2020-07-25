@@ -14,6 +14,8 @@
 <body>
     <!-- 顯示toast的區塊 -->
     <div id="toast-panel"></div>
+    <!-- 顯示confirm的區塊 -->
+    <div id='confirm-panel'></div>
     <nav class="nav-fixed">
         <div class="nav-logo">
             BYJT
@@ -92,24 +94,22 @@
             </div>
         </form>
         <span id="alter-pwd-btn">修改密碼</span>
-        <div style="position: fixed; margin: auto;">
-            <form action="" id="alter-form" class="vc-container">
-                <span id="close" class="alt-submit">
-                    <img src="https://img.icons8.com/fluent/48/000000/close-window.png" />
-                </span>
-                <div class="input-group">
-                    <div class="input-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;新密碼</div>
-                    <input type="password" class="input-box">
-                </div>
-                <div class="input-group">
-                    <div class="input-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;確認密碼</div>
-                    <input type="password" class="input-box">
-                </div>
-                <div class="input-group">
-                    <input type="submit" class="submit alt-submit" value="修改">
-                </div>
-            </form>
-        </div>
+        <form action="" id="alter-pop" class="vc-container pop-window">
+            <span class="pop-window-close-btn">
+                <img src="https://img.icons8.com/fluent/48/000000/close-window.png" />
+            </span>
+            <div class="input-group">
+                <div class="input-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;新密碼</div>
+                <input type="password" class="input-box">
+            </div>
+            <div class="input-group">
+                <div class="input-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;確認密碼</div>
+                <input type="password" class="input-box">
+            </div>
+            <div class="input-group">
+                <input type="submit" class="submit alt-submit" value="修改">
+            </div>
+        </form>
     </main>
     <footer class="footer">
         Copyright © 2020 BYJT

@@ -1,15 +1,42 @@
-.toast {
+.toast, .pop-window {
     display: flex;
     justify-content: center;
     position: relative;
-    background-color: #ececec;
     padding: 20px 20px;
     border-radius: 4px;
     margin: 1vh;
     box-shadow: 0 3px 5px #CCCCCC;
     pointer-events: initial;
     overflow: hidden;
+    max-width: 500px;
 }
+
+.pop-window {
+    display: none;
+    position: fixed;
+}
+
+.toast-normal, .confirm {
+    background-color: #fbfbfb;
+}
+
+.confirm {
+    position: fixed;
+    top: 0;
+    flex-direction: column;
+    align-items: center;
+    min-width: 30vw;
+    max-width: 500px;
+    z-index: 51;
+}
+
+.confirm-btn-group {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    width: 100%;
+}
+
 .toast-success {
     color: #0f7955;
     background-color: #7cecb0;
@@ -25,38 +52,54 @@
     color: #684c00;
 }
 
-#toast-panel, 
-#toast-panel-left, 
-#toast-panel-right {
+#toast-panel,
+#confirm-panel {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 90%;
+    min-height: 90%;
     bottom: 0;
     position: fixed;
-    z-index: 99;
+    z-index: 50;
     pointer-events: none;
+    overflow: hidden;
 }
 
-#toast-panel {
-    left: 0;
-    right: 0;
+#toast-panel,  #confirm-panel{
+    width: 100vw;
 }
 
-#toast-panel-left {
-    left: 0;
-}
-
-#toast-panel-right {
-    right: 0;
-}
-
-.toast-close-btn {
+.toast-close-btn, .pop-window-close-btn, .confirm-close-btn {
     position: absolute;
+    cursor: pointer;
+}
+
+.toast-close-btn, .pop-window-close-btn, .confirm-close-btn {
     top: 15px;
     right: 10px;
     cursor: pointer;
+}
+
+
+.confirm-ok-btn, .confirm-cancel-btn {
+    cursor: pointer;
+    bottom: 15px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.confirm-ok-btn{
+    left: 10px;
+    background-color: #2d86b9;
+    color: white;
+} 
+
+.confirm-cancel-btn {
+    right: 10px;
+    background-color: #dfdfdf;
+    color: #666666;
 }
 
 .toast-icon {
@@ -64,15 +107,44 @@
    left: 15px;
 }
 
-.toast-msg {
+.toast-msg, .confirm-msg {
     padding: 0 20px;
-    max-width: 70vw;
     word-wrap: break-word;
     word-break: break-all;
+}
+
+.confirm-msg {
+    text-align: center;
+    width: 100%;
+    padding: 20px 20px;
+    border-bottom: #CCCCCC 1px solid;
 }
 
 @media screen and (max-width: 600px) {
     .toast-close-btn {
         font-size: 23px;
+    }
+
+    .toast {
+        max-width: 70vw;
+    }
+
+    .confirm-ok-btn{
+        left: 10px;
+        background-color: #2d86b9;
+        color: white;
+    } 
+    
+    .confirm-cancel-btn {
+        right: 10px;
+        background-color: #dfdfdf;
+        color: #666666;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .confirm-ok-btn, .confirm-cancel-btn {
+        padding: 10px 20px;
+        font-size: 10px;
     }
 }

@@ -2,12 +2,17 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
 <link rel="stylesheet" href="../css/component/toast.css">
 
-<div id="toast-panel" style="height: 100vh;">
-</div>
+<!-- 顯示toast的區塊 -->
+<div id="toast-panel"></div>
+<!-- 顯示confirm的區塊 -->
+<div id='confirm-panel'></div>
+<button onclick="clickMe()">click me</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
 <script src="../js/index.js"></script>
 <script>
-    launchToast();
+    function clickMe() {
+        console.log('click');
+    }
 </script>
