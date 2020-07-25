@@ -49,12 +49,14 @@ class Toast {
 
     static FAIL = 2;
 
+    static WARN = 3;
+
     static createDefaultConfig() { //回傳預設值
         return {
             message: '',
             type: Toast.NORMAL,
             delay: 1500,
-            keep: false,
+            close: false,
         }
     }
 
@@ -64,7 +66,7 @@ class Toast {
         setting = Object.assign(Toast.createDefaultConfig(), setting);
 
         //創造基礎toast
-        let ref = $(`<div class="toast">&nbsp;&nbsp;${setting.message}</div>`);
+        let ref = $(`<div class="toast"><div class='toast-msg'>${setting.message}</div></div>`);
         //依照類型塞入class
         switch (setting.type) {
             case Toast.NORMAL:
@@ -72,9 +74,15 @@ class Toast {
                 break;
             case Toast.SUCCESS:
                 ref.addClass('toast-success');
+                ref.append('<i class="fas fa-check-circle toast-icon"></i>');
                 break;
             case Toast.FAIL:
                 ref.addClass('toast-fail');
+                ref.append('<i class="fas fa-times-circle toast-icon"></i>');
+                break;
+            case Toast.WARN:
+                ref.addClass('toast-warn');
+                ref.append('<i class="fas fa-exclamation-triangle toast-icon"></i>');
                 break;
             default:
                 ref.addClass('toast-normal');
@@ -112,13 +120,37 @@ class Toast {
 }
 
 //demo
-$('#toast-panel').append(Toast.create({ message: '一般提示框', type: Toast.NORMAL }));
-setTimeout(function () {
-    $('#toast-panel').append(Toast.create({ message: '成功', type: Toast.SUCCESS }));
-}, 1000);
-setTimeout(function () {
-    $('#toast-panel').append(Toast.create({ message: '不會自動消失的失敗提示', type: Toast.FAIL, close: true }));
-}, 2000);
-setTimeout(function () {
-    $('#toast-panel').append(Toast.create({ message: '我不會自動消失', close: true }));
-}, 3000);
+function launchToast() {
+    $('#toast-panel').append(Toast.create({
+        message:
+            "\
+            Toast說明: Toast類型有Toast.NORMAL\
+            Toast.SUCCESS, Toast.WARN, Toast.FAIL,\
+            要創建一個新的Toast使用Toast.create(setting),\
+            並將Toast.create()回傳的DOM插入欲顯示toast之dom\
+            ex:(div class=\"toast-panel\")\
+            setting類型為object，屬性介紹:\
+            message:text=>文字內容,\
+            type:int=>Toast.[類型], \
+            delay:int => delay毫秒後執行消失動畫\
+            close:boolean=>是否有關閉功能，若有則toast需按下關閉才執行消失動畫,\
+            ",
+        type: Toast.WARN,
+        close: true
+    }));
+    setTimeout(function () {
+        $('#toast-panel').append(Toast.create({ message: 'Normal Toast, it will not be disappear automatically. If you want to close it, please click \'X\'. ', type: Toast.NORMAL, close: true }));
+    }, 1000)
+    setTimeout(function () {
+        $('#toast-panel').append(Toast.create({ message: 'Success', type: Toast.SUCCESS }));
+    }, 2000);
+    setTimeout(function () {
+        $('#toast-panel').append(Toast.create({ message: 'Warn', type: Toast.WARN }));
+    }, 3000);
+    setTimeout(function () {
+        $('#toast-panel').append(Toast.create({ message: 'Fail', type: Toast.FAIL }));
+    }, 4000);
+}
+
+
+

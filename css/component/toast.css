@@ -1,14 +1,15 @@
 .toast {
+    display: flex;
+    justify-content: center;
     position: relative;
-    text-align: center;
-    background-color: white;
-    padding: 20px 40px;
+    background-color: #ececec;
+    padding: 20px 20px;
     border-radius: 4px;
-    min-width: 20vw;
     margin: 1vh;
     box-shadow: 0 3px 5px #CCCCCC;
+    pointer-events: initial;
+    overflow: hidden;
 }
-
 .toast-success {
     color: #0f7955;
     background-color: #7cecb0;
@@ -17,6 +18,11 @@
 .toast-fail {
     background-color: #ec8d8d;
     color: #9b2d2d;
+}
+
+.toast-warn {
+    background-color: #e0d646;
+    color: #684c00;
 }
 
 #toast-panel, 
@@ -48,9 +54,25 @@
 
 .toast-close-btn {
     position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px;
+    top: 15px;
+    right: 10px;
     cursor: pointer;
-    pointer-events: initial;
+}
+
+.toast-icon {
+   position: absolute;
+   left: 15px;
+}
+
+.toast-msg {
+    padding: 0 20px;
+    max-width: 70vw;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+@media screen and (max-width: 600px) {
+    .toast-close-btn {
+        font-size: 23px;
+    }
 }
