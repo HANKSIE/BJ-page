@@ -5,7 +5,7 @@
     padding: 20px 20px;
     border-radius: 4px;
     margin: 1vh;
-    box-shadow: 0 3px 10px #CCCCCC;
+    box-shadow: 0 3px 4px #AAAAAA;
     pointer-events: initial;
     overflow: hidden;
     max-width: 500px;
@@ -21,13 +21,11 @@
 }
 
 .confirm {
-    position: fixed;
     top: 0;
     flex-direction: column;
     align-items: center;
     min-width: 30vw;
     max-width: 500px;
-    z-index: 51;
 }
 
 .confirm-btn-group {
@@ -56,18 +54,22 @@
 #confirm-panel {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     min-height: 90%;
     bottom: 0;
     position: fixed;
-    z-index: 50;
+    
     pointer-events: none;
     overflow: hidden;
+    width: 100vw;
 }
 
-#toast-panel,  #confirm-panel{
-    width: 100vw;
+#toast-panel {
+    z-index: 49;
+}
+
+#confirm-panel {
+    z-index: 51;
 }
 
 .toast-close-btn, .pop-window-close-btn, .confirm-close-btn {
@@ -121,6 +123,12 @@
 }
 
 @media screen and (max-width: 600px) {
+
+    #toast-panel, #confirm-panel {
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+    }
+
     .toast-close-btn {
         font-size: 23px;
     }
