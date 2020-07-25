@@ -5,7 +5,7 @@
     padding: 20px 20px;
     border-radius: 4px;
     margin: 1vh;
-    box-shadow: 0 3px 5px #CCCCCC;
+    box-shadow: 0 3px 10px #CCCCCC;
     pointer-events: initial;
     overflow: hidden;
     max-width: 500px;
@@ -17,7 +17,7 @@
 }
 
 .toast-normal, .confirm {
-    background-color: #fbfbfb;
+    background-color: #ffffff;
 }
 
 .confirm {
