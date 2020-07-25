@@ -45,29 +45,30 @@ class Toast {
 
     static NORMAL = 0;
 
-    static KEEP = 1;
+    static SUCCESS = 1;
 
-    static SUCCESS = 2;
+    static FAIL = 2;
 
-    static FAIL = 3;
+    static createDefaultConfig() { //回傳預設值
+        return {
+            message: '',
+            type: Toast.NORMAL,
+            delay: 1500,
+            keep: false,
+        }
+    }
 
     //如果type是Toast.KEEP, delay不生效
-    static create(message, type = Toast.NORMAL, delay = 2000) {
+    static create(setting) {
+
+        setting = Object.assign(Toast.createDefaultConfig(), setting);
+
         //創造基礎toast
-        let ref = $(`<div class="toast">&nbsp;&nbsp;${message}</div>`);
+        let ref = $(`<div class="toast">&nbsp;&nbsp;${setting.message}</div>`);
         //依照類型塞入class
-        switch (type) {
+        switch (setting.type) {
             case Toast.NORMAL:
                 ref.addClass('toast-normal');
-                break;
-            case Toast.KEEP:
-                ref.addClass('toast-keep');
-                //加入關閉按鈕
-                let close = $('<div class="toast-close-btn"><i class="fas fa-times"></i></div>');
-                close.click(function () {
-                    Toast.fadeOut(ref, 0);
-                });
-                ref.append(close);
                 break;
             case Toast.SUCCESS:
                 ref.addClass('toast-success');
@@ -80,36 +81,44 @@ class Toast {
                 break;
         }
 
-        if (type != Toast.KEEP) { //類型是Toast.KEEP，不執行fadeOut
-            Toast.fadeOut(ref, delay);
+        if (setting.type == Toast.KEEP || setting.close == true) {
+            //加入關閉按鈕
+            let close = $('<div class="toast-close-btn"><i class="fas fa-times"></i></div>');
+            close.click(function () {
+                Toast.fadeOut(ref, 0);
+            });
+            ref.append(close);
+        } else {
+            Toast.fadeOut(ref, setting.delay);
         }
 
         return ref;
     }
 
     static fadeOut(ref, delay) {
-        setTimeout(() => {
-            let interval = setInterval(() => {
-                if (ref.css('opacity') > 0) {
-                    ref.css('opacity', ref.css('opacity') - 0.1);
-                } else {
+
+        setTimeout(() => { //delay毫秒後才開始動畫
+            ref.animate({ opacity: 0 }, 800); //(delay + 1000)毫秒後變透明
+            setTimeout(() => { //(delay + 800)毫秒後高度縮小
+                let minify = 500;
+                ref.animate({ height: 0, padding: 0, margin: 0 }, minify);
+                setTimeout(() => {
                     ref.remove();
-                    clearInterval(interval);
-                }
-            }, 50);
+                }, minify + 500); //延遲消除dom
+            }, 600);
         }, delay)
     }
 
 }
 
 //demo
-$('#toast-panel').append(Toast.create('一般提示框', Toast.NORMAL));
+$('#toast-panel').append(Toast.create({ message: '一般提示框', type: Toast.NORMAL }));
 setTimeout(function () {
-    $('#toast-panel').append(Toast.create('成功', Toast.SUCCESS));
+    $('#toast-panel').append(Toast.create({ message: '成功', type: Toast.SUCCESS }));
 }, 1000);
 setTimeout(function () {
-    $('#toast-panel').append(Toast.create('失敗', Toast.FAIL));
+    $('#toast-panel').append(Toast.create({ message: '不會自動消失的失敗提示', type: Toast.FAIL, close: true }));
 }, 2000);
 setTimeout(function () {
-    $('#toast-panel').append(Toast.create('我不會消失，除非你按下右上角的X', Toast.KEEP));
+    $('#toast-panel').append(Toast.create({ message: '我不會自動消失', close: true }));
 }, 3000);
