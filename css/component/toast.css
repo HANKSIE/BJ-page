@@ -30,7 +30,7 @@
 
 .confirm-btn-group {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding-top: 10px;
     width: 100%;
 }
