@@ -1,5 +1,6 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 
@@ -19,6 +20,7 @@ module.exports = {
 
     plugins: [
         new CleanWebpackPlugin(),
+        new OptimizeCssAssetsWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'index.css',
         }),
