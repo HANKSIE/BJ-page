@@ -1,4 +1,5 @@
 import $ from "jquery";
+import "../css/index.css";
 
 /**
  * nav event init

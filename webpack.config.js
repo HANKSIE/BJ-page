@@ -1,4 +1,6 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const autoprefixer = require('autoprefixer');
 const path = require('path');
 
 
@@ -15,7 +17,12 @@ module.exports = {
         filename: 'index.js',
     },
 
-    plugins: [new CleanWebpackPlugin()],
+    plugins: [
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'index.css',
+        }),
+    ],
 
     module: {
         rules: [
@@ -27,6 +34,21 @@ module.exports = {
                     presets: ["@babel/preset-env"],
                     plugins: ["@babel/plugin-proposal-class-properties"],
                 },
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [autoprefixer]
+                        }
+                    },
+                ],
             },
         ],
     },
