@@ -5,6 +5,7 @@
     background-color: transparent;
     outline: none;
     margin: 5px 0;
+    width: 200px;
 }
 
 .input-box:focus {
