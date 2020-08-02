@@ -1,6 +1,7 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 
@@ -14,8 +15,17 @@ module.exports = {
     ],
 
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
+    },
+
+    devServer: {
+        publicPath: '/dist/',
+        hot: true,
+        port: 3000,
+        inline: true,
+        compress: true,
+        openPage: './dist/master.html'
     },
 
     plugins: [
@@ -23,6 +33,10 @@ module.exports = {
         new OptimizeCssAssetsWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'index.css',
+        }),
+        new HtmlWebpackPlugin({
+            template: './templates/master.html',
+            filename: 'master.html',
         }),
     ],
 
