@@ -1,5 +1,5 @@
 /*垂直置中*/
-.vc-container {
+.vc-layout {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 /*水平置右*/
-.hr-container {
+.hr-layout {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -15,7 +15,7 @@
 }
 
 /*水平置中*/
-.hc-container {
+.hc-layout {
     display: flex;
     flex-direction: row;
     justify-content: center;
