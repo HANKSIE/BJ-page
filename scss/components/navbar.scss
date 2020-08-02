@@ -1,0 +1,52 @@
+@import "../theme/default.scss";
+
+.nav, .nav-fixed {
+
+    .nav-item, .nav-logo {
+        padding: 20px 1.5vw;
+        color: $color-2;
+        font-size: 15px;
+    }
+    
+    .nav-logo {
+        flex-grow: 1;
+    }
+    
+    .nav-menu-btn {
+        display: none;
+    }
+    
+    .nav-item:hover {
+        background-color: $color-1-hover;
+        cursor: pointer;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .nav, .nav-fixed {
+
+        a {
+            width: 100%;
+        }
+       
+        .nav-item {
+            text-align: center;
+            width: 100%;
+        }  
+    
+        .nav-menu-btn {
+            display: block;
+            padding: 20px 5vw;
+            color: #CCCCCC;
+
+            &:hover {
+                background-color: $color-1-hover;
+                cursor: pointer;
+            }
+        }
+        
+    }
+
+}

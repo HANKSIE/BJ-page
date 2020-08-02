@@ -1,0 +1,18 @@
+@import "../layout/base.scss";
+@import "../theme/default.scss";
+
+a {
+    color: black;
+}
+
+.main {
+    @include vc-layout;
+    min-height: 100vh;
+}
+
+.footer {
+    padding: 5vh 0;
+    text-align: center;
+    color: $color-2;
+    background-color: $color-1;
+}

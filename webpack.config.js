@@ -35,7 +35,7 @@ module.exports = {
             filename: 'index.css',
         }),
         new HtmlWebpackPlugin({
-            template: './templates/master.html',
+            template: './pages/templates/master.html',
             filename: 'master.html',
         }),
     ],
@@ -64,6 +64,21 @@ module.exports = {
                             plugins: [autoprefixer]
                         }
                     },
+                ],
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                // 把 sass-loader 放在首要處理 (第一步)
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [autoprefixer]
+                        }
+                    },
+                    'sass-loader'
                 ],
             },
         ],

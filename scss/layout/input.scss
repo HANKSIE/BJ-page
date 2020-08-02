@@ -1,0 +1,6 @@
+@import "./base.scss";
+
+.input-group {
+    @include vc-layout;
+    padding: 10px 10px;
+}

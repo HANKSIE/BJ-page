@@ -1,5 +1,5 @@
 /*垂直置中*/
-.vc-layout {
+@mixin  vc-layout {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 /*水平置右*/
-.hr-layout {
+@mixin hr-layout {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -15,9 +15,24 @@
 }
 
 /*水平置中*/
-.hc-layout {
+@mixin hc-layout {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+/*垂直置中*/
+.vc-layout {
+    @include vc-layout;
+}
+
+/*水平置右*/
+.hr-layout {
+    @include hr-layout;
+}
+
+/*水平置中*/
+.hc-layout {
+    @include hc-layout;
 }

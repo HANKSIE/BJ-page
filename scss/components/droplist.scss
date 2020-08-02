@@ -1,0 +1,36 @@
+@import "../theme/default.scss";
+
+.drop-list {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: $color-1;
+    min-width: 100%;
+    box-shadow: 0 3px 5px #CCCCCC;
+    white-space: nowrap;
+
+    .drop-item {
+        width: 100%;
+    }
+    
+    .dropdown {
+        position: relative;
+    }
+
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+    .dropdown {
+        width: 100%;
+        .drop-list {
+            position: static;
+            box-shadow: none;
+            background-color: #4d4d4d;
+            
+        }
+    }
+    
+}

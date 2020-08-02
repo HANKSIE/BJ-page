@@ -1,0 +1,65 @@
+@import "./base.scss";
+@import "../theme/default.scss";
+
+.toast, .pop-window {
+    @include hc-layout;
+    position: relative;
+    padding: 20px 20px;
+    border-radius: 4px;
+    margin: 1vh;
+    box-shadow: 0 1px 8px #AAAAAA;
+    pointer-events: initial;
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.pop-window {
+    display: none;
+    position: fixed;
+}
+
+.toast-normal, .confirm {
+    background-color: $color-2;
+}
+
+.confirm {
+    @include vc-layout;
+    top: 0;
+    min-width: 30vw;
+    max-width: 500px;
+}
+
+.confirm-btn-group {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    width: 100%;
+}
+
+#toast-panel,
+#confirm-panel {
+    @include vc-layout;
+    min-height: 90%;
+    bottom: 0;
+    position: fixed;
+    pointer-events: none;
+    overflow: hidden;
+    width: 100vw;
+}
+
+#toast-panel {
+    z-index: 55;
+}
+
+#confirm-panel {
+    z-index: 56;
+}
+
+@media screen and (max-width: 600px) {
+
+    #toast-panel, #confirm-panel {
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+    }
+    
+}
