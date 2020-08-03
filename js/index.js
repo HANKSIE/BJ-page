@@ -1,7 +1,6 @@
 import $ from "jquery";
-import "../css/index.css";
-// import "../scss/index.scss";
-
+// import "../css/index.css";
+import "../scss/index.scss";
 
 /**
  * nav event init
