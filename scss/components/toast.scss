@@ -9,6 +9,7 @@
 
 .toast {
   @include pop;
+  align-items: flex-start;
   background-color: $color-2;
 
   .toast-msg {
@@ -19,11 +20,6 @@
 
   .toast-close-btn {
     @include rt-close-btn;
-  }
-
-  .toast-icon {
-    position: absolute;
-    left: 15px;
   }
 }
 

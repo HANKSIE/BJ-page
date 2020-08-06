@@ -26,7 +26,6 @@ export default Object.freeze({
   LOCK: "lock",
   TOAST: {
     TOAST: "toast",
-    ICON: "toast-icon",
     MESSAGE: "toast-msg",
     SUCCESS: "toast-success",
     WARN: "toast-warn",

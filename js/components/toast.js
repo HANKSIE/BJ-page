@@ -45,20 +45,20 @@ class Toast {
       `<div class="${TOAST.TOAST}"><div class="${TOAST.MESSAGE}">${message}</div></div>`
     );
 
-    let icon = $(`<i class="fas fa-check-circle ${TOAST.ICON}"></i>`);
+    let icon = $(`<i class="fas fa-check-circle"></i>`);
     //依照類型塞入class
     switch (type) {
       case Toast.SUCCESS:
         ref.addClass(TOAST.SUCCESS);
-        ref.append(icon);
+        ref.prepend(icon);
         break;
       case Toast.ERROR:
         ref.addClass(TOAST.ERROR);
-        ref.append(icon);
+        ref.prepend(icon);
         break;
       case Toast.WARN:
         ref.addClass(TOAST.WARN);
-        ref.append(icon);
+        ref.prepend(icon);
         break;
     }
 

@@ -1,9 +1,7 @@
 import $ from "jquery";
 import CLASSNAME from "../constant/css/className";
 import ID from "../constant/css/id";
-import Animate from "../animations/animate";
 
-const { slideUpRemove } = Animate;
 const { CONFIRM_LOCK, CONFIRM_PANEL, CONFIRM_OVERLAY } = ID;
 const { OVERLAY, CONFIRM, LOCK } = CLASSNAME;
 
@@ -41,8 +39,10 @@ class Confirm {
     let cancel = $(`<div class="${CONFIRM.CANCEL_BTN}">${config.cancel}</div>`);
     cancel.click(function () {
       cancel.unbind("click"); //解除綁定事件
-      slideUpRemove(ref, 500);
-      unlock();
+      ref.fadeOut(300, () => {
+        ref.remove();
+        unlock();
+      });
       cancelHandle();
     });
 
@@ -52,9 +52,9 @@ class Confirm {
 
       ref.fadeOut(300, () => {
         ref.remove();
+        unlock();
       });
 
-      unlock();
       okHandle();
     });
 
