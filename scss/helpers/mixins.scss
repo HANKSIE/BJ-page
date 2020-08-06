@@ -1,0 +1,65 @@
+/*=== layout ===*/
+/*垂直置中*/
+@mixin vc-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*水平置右*/
+@mixin hr-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/*水平置中*/
+@mixin hc-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/*=== toast/confirm/pop-window ===*/
+@mixin panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  bottom: 0;
+  position: fixed;
+  pointer-events: none;
+  overflow: hidden;
+  width: 100vw;
+}
+
+@mixin pop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px 20px;
+  border-radius: 4px;
+  margin: 1vh;
+  box-shadow: 0 1px 8px #aaaaaa;
+  pointer-events: initial;
+  overflow: hidden;
+  max-width: 500px;
+}
+
+/*=== btn ===*/
+@mixin btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin rt-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+}

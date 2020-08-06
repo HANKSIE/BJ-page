@@ -1,12 +1,7 @@
-%btn {
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
+@import "../helpers/mixins.scss";
 .submit {
-    @extend %btn;
-    padding: 5px 20px;
-    font-size: 23px;
-    background-color: transparent;
+  @include btn;
+  padding: 5px 20px;
+  font-size: 23px;
+  background-color: transparent;
 }

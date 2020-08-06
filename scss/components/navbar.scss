@@ -1,52 +1,84 @@
+@import "../helpers/mixins.scss";
 @import "../theme/default.scss";
 
-.nav, .nav-fixed {
+@mixin element {
+  padding: 20px 1.5vw;
+  color: $color-2;
+  font-size: 15px;
+}
 
-    .nav-item, .nav-logo {
-        padding: 20px 1.5vw;
-        color: $color-2;
-        font-size: 15px;
-    }
-    
-    .nav-logo {
-        flex-grow: 1;
-    }
-    
+.nav,
+.nav-fixed {
+  @include hr-layout;
+  background-color: $color-1;
+  width: 100%;
+  box-shadow: 0 3px 5px #cccccc;
+
+  .nav-logo {
+    @include element;
+    flex-grow: 1;
+  }
+
+  .nav-menu {
     .nav-menu-btn {
-        display: none;
-    }
-    
-    .nav-item:hover {
+      display: none;
+      @include element;
+      &:hover {
         background-color: $color-1-hover;
         cursor: pointer;
+      }
     }
 
+    .nav-item-group {
+      @include hc-layout;
+      .nav-item {
+        @include element;
+      }
+    }
+  }
+}
+
+.nav-fixed {
+  position: fixed;
+  top: 0;
 }
 
 @media screen and (max-width: 600px) {
-
-    .nav, .nav-fixed {
-
-        a {
-            width: 100%;
-        }
-       
-        .nav-item {
-            text-align: center;
-            width: 100%;
-        }  
-    
-        .nav-menu-btn {
-            display: block;
-            padding: 20px 5vw;
-            color: #CCCCCC;
-
-            &:hover {
-                background-color: $color-1-hover;
-                cursor: pointer;
-            }
-        }
-        
+  .nav,
+  .nav-fixed {
+    z-index: 50;
+    a {
+      width: 100%;
     }
 
+    .nav-menu {
+      .nav-menu-btn {
+        display: block;
+        padding: 20px 5vw;
+        color: #cccccc;
+
+        &:hover {
+          background-color: $color-1-hover;
+          cursor: pointer;
+        }
+      }
+
+      .nav-item-group {
+        display: none;
+        // @include vc-layout;
+        position: absolute;
+        background-color: $color-1;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 3px 5px #cccccc;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        max-height: 70vh;
+        .nav-item {
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+  }
 }

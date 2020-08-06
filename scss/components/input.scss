@@ -1,25 +1,33 @@
+@import "../helpers/mixins.scss";
+
+.input-group {
+  @include vc-layout;
+  padding: 10px 10px;
+}
+
 .input-box {
-    border: none;
-    border-bottom: #666666 solid 2px;
-    color: #666666;
-    background-color: transparent;
-    outline: none;
-    margin: 5px 0;
-    width: 200px;
+  border: none;
+  border-bottom: #666666 solid 2px;
+  color: #666666;
+  background-color: transparent;
+  outline: none;
+  margin: 5px 0;
+  width: 200px;
 }
 
 .input-box:focus {
-    border-color: #222222;
-    caret-color: #222222;
-    color: #222222;
+  border-color: #222222;
+  caret-color: #222222;
+  color: #222222;
 }
 
 .input-label {
-    width: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 380px) {
-    .input-box, .input-label {
-        width: 60vw;
-    }
+  .input-box,
+  .input-label {
+    width: 60vw;
+  }
 }

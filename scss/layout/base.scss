@@ -1,38 +1,16 @@
-/*垂直置中*/
-@mixin vc-layout {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/*水平置右*/
-@mixin hr-layout {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-/*水平置中*/
-@mixin hc-layout {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
+@import "../helpers/mixins.scss";
 
 /*垂直置中*/
 .vc-layout {
-    @include vc-layout;
+  @include vc-layout;
 }
 
 /*水平置右*/
 .hr-layout {
-    @include hr-layout;
+  @include hr-layout;
 }
 
 /*水平置中*/
 .hc-layout {
-    @include hc-layout;
+  @include hc-layout;
 }

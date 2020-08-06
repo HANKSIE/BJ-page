@@ -1,0 +1,13 @@
+@import "../theme/default.scss";
+@import "../helpers/mixins.scss";
+
+.pop-window {
+  background-color: $color-2;
+  @include pop;
+  display: none;
+  position: fixed;
+
+  .pop-window-close-btn {
+    @include rt-close-btn;
+  }
+}

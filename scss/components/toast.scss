@@ -1,100 +1,56 @@
 @import "../theme/default.scss";
+@import "../helpers/mixins.scss";
 
-.toast, .pop-window, .confirm {
+#toast-panel {
+  @include panel;
+  min-height: 90vh;
+  z-index: 55;
+}
 
-    background-color: $color-2;
+.toast {
+  @include pop;
+  background-color: $color-2;
 
-    .toast-close-btn, .pop-window-close-btn, .confirm-close-btn {
-        position: absolute;
-        top: 15px;
-        right: 10px;
-        cursor: pointer;
-    }
+  .toast-msg {
+    padding: 0 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
 
-    .confirm-btn-group {
-        .confirm-ok-btn, .confirm-cancel-btn {
-            cursor: pointer;
-            bottom: 15px;
-            padding: 10px 25px;
-            border-radius: 5px;
-            font-size: 12px;
-        }
+  .toast-close-btn {
+    @include rt-close-btn;
+  }
 
-        .confirm-ok-btn{
-            left: 10px;
-            background-color: #2d86b9;
-            color: white;
-        } 
-        
-        .confirm-cancel-btn {
-            right: 10px;
-            background-color: #dfdfdf;
-            color: #666666;
-        }
-    }    
-
-    .toast-icon {
-        position: absolute;
-        left: 15px;
-     }
-     
-     .toast-msg, .confirm-msg {
-         padding: 0 20px;
-         word-wrap: break-word;
-         word-break: break-all;
-     }
-     
-     .confirm-msg {
-         text-align: center;
-         width: 100%;
-         padding: 20px 20px;
-         border-bottom: #CCCCCC 1px solid;
-     }     
-    
+  .toast-icon {
+    position: absolute;
+    left: 15px;
+  }
 }
 
 .toast-success {
-    color: #0f7955;
-    background-color: #7cecb0;
+  color: #0f7955;
+  background-color: #7cecb0;
 }
 
-.toast-fail {
-    background-color: #ec8d8d;
-    color: #9b2d2d;
+.toast-error {
+  background-color: #ec8d8d;
+  color: #9b2d2d;
 }
 
 .toast-warn {
-    background-color: #e0d646;
-    color: #684c00;
+  background-color: #e0d646;
+  color: #684c00;
 }
-
 
 @media screen and (max-width: 600px) {
-
-    .toast-close-btn {
-        font-size: 23px;
-    }
-
+  #toast-panel {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
     .toast {
-        max-width: 70vw;
+      max-width: 70vw;
+      .toast-close-btn {
+        font-size: 23px;
+      }
     }
-
-    .confirm-ok-btn{
-        left: 10px;
-        background-color: #2d86b9;
-        color: white;
-    } 
-    
-    .confirm-cancel-btn {
-        right: 10px;
-        background-color: #dfdfdf;
-        color: #666666;
-    }
-}
-
-@media screen and (max-width: 300px) {
-    .confirm-ok-btn, .confirm-cancel-btn {
-        padding: 10px 20px;
-        font-size: 10px;
-    }
+  }
 }
