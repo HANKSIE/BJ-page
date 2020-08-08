@@ -1,10 +1,8 @@
 import $ from "jquery";
-import CLASSNAME from "../constant/css/className";
-import ID from "../constant/css/id";
+import { TOAST } from "../constant/css/className";
+import { TOAST_PANEL } from "../constant/css/id";
 import Animate from "../animations/animate";
 
-const { TOAST } = CLASSNAME;
-const { TOAST_PANEL } = ID;
 const { slideUpRemove } = Animate;
 
 class Toast {

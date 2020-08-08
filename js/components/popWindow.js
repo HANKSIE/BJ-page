@@ -1,7 +1,5 @@
 import $ from "jquery";
-import CLASSNAME from "../constant/css/className";
-
-const { POP_WINDOW } = CLASSNAME;
+import { POP_WINDOW } from "../constant/css/className";
 
 class PopWindow {
   static createDefaultConfig() {

@@ -1,12 +1,11 @@
 import $ from "jquery";
 import "../scss/index.scss";
-import CLASSNAME from "./constant/css/className";
+import { DROPDOWN, NAVBAR } from "./constant/css/className";
 
 import Toast from "./components/toast";
 import Confirm from "./components/confirm";
 import PopWindow from "./components/popWindow";
 
-const { DROPDOWN, NAVBAR } = CLASSNAME;
 /**
  * nav event init
  */

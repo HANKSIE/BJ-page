@@ -1,9 +1,10 @@
 import $ from "jquery";
-import CLASSNAME from "../constant/css/className";
-import ID from "../constant/css/id";
-
-const { CONFIRM_LOCK, CONFIRM_PANEL, CONFIRM_OVERLAY } = ID;
-const { OVERLAY, CONFIRM, LOCK } = CLASSNAME;
+import { OVERLAY, CONFIRM, LOCK } from "../constant/css/className";
+import {
+  CONFIRM_LOCK,
+  CONFIRM_PANEL,
+  CONFIRM_OVERLAY,
+} from "../constant/css/id";
 
 const unlock = () => {
   $(`#${CONFIRM_LOCK}`).removeClass(LOCK);

@@ -1,6 +1,4 @@
-export default Object.freeze({
-  TOAST_PANEL: "toast-panel",
-  CONFIRM_PANEL: "confirm-panel",
-  CONFIRM_LOCK: "confirm-lock-zone",
-  CONFIRM_OVERLAY: "confirm-overlay",
-});
+export const TOAST_PANEL = "toast-panel";
+export const CONFIRM_PANEL = "confirm-panel";
+export const CONFIRM_LOCK = "confirm-lock-zone";
+export const CONFIRM_OVERLAY = "confirm-overlay";
