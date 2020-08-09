@@ -9,6 +9,7 @@
 
 .toast {
   @include pop;
+  @include center-layout;
   align-items: flex-start;
   background-color: $color-2;
 

@@ -45,55 +45,55 @@ $(`.${NAVBAR.NAV_FIXED}`).each(function () {
 });
 
 //demo
-(function launchToast() {
-  Confirm.launch(
-    {
-      message: "Confirm Message",
-      ok: "確定",
-      cancel: "取消",
-    },
-    function () {
-      console.log("ok");
-    },
-    function () {
-      console.log("cancel");
-    }
-  );
+// (function launchToast() {
+//   Confirm.launch(
+//     {
+//       message: "Confirm Message",
+//       ok: "確定",
+//       cancel: "取消",
+//     },
+//     function () {
+//       console.log("ok");
+//     },
+//     function () {
+//       console.log("cancel");
+//     }
+//   );
 
-  Toast.launch({
-    message:
-      '\
-          Toast說明: Toast類型有\
-          Toast.SUCCESS, Toast.WARN, Toast.ERROR,\
-          要創建一個新的Toast使用Toast.create(config),\
-          並將Toast.create()回傳的DOM插入欲顯示toast之dom\
-          ex:(div class="toast-panel")\
-          config類型為object，屬性介紹:\
-          message:text=>文字內容,\
-          type:int=>Toast.[類型], \
-          delay:int => delay毫秒後執行消失動畫\
-          close:boolean=>是否有關閉功能，若有則toast需按下關閉才執行消失動畫,\
-          ',
-    type: Toast.WARN,
-    close: true,
-  });
-  setTimeout(function () {
-    Toast.launch({
-      message:
-        "Normal Toast, it will not be disappear automatically. If you want to close it, please click 'X'. ",
-      close: true,
-    });
-  }, 1000);
-  setTimeout(function () {
-    Toast.launch({ message: "Success", type: Toast.SUCCESS });
-  }, 2000);
-  setTimeout(function () {
-    Toast.launch({ message: "Warn", type: Toast.WARN });
-  }, 3000);
-  setTimeout(function () {
-    Toast.launch({ message: "Error", type: Toast.ERROR });
-  }, 4000);
-})();
+//   Toast.launch({
+//     message:
+//       '\
+//           Toast說明: Toast類型有\
+//           Toast.SUCCESS, Toast.WARN, Toast.ERROR,\
+//           要創建一個新的Toast使用Toast.create(config),\
+//           並將Toast.create()回傳的DOM插入欲顯示toast之dom\
+//           ex:(div class="toast-panel")\
+//           config類型為object，屬性介紹:\
+//           message:text=>文字內容,\
+//           type:int=>Toast.[類型], \
+//           delay:int => delay毫秒後執行消失動畫\
+//           close:boolean=>是否有關閉功能，若有則toast需按下關閉才執行消失動畫,\
+//           ',
+//     type: Toast.WARN,
+//     close: true,
+//   });
+//   setTimeout(function () {
+//     Toast.launch({
+//       message:
+//         "Normal Toast, it will not be disappear automatically. If you want to close it, please click 'X'. ",
+//       close: true,
+//     });
+//   }, 1000);
+//   setTimeout(function () {
+//     Toast.launch({ message: "Success", type: Toast.SUCCESS });
+//   }, 2000);
+//   setTimeout(function () {
+//     Toast.launch({ message: "Warn", type: Toast.WARN });
+//   }, 3000);
+//   setTimeout(function () {
+//     Toast.launch({ message: "Error", type: Toast.ERROR });
+//   }, 4000);
+// })();
 
 PopWindow.register({
   btnID: "alter-pwd-btn",

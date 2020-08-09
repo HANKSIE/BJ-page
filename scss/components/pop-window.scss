@@ -4,9 +4,9 @@
 .pop-window {
   background-color: $color-2;
   @include pop;
-  display: none;
+  @include center-layout;
   position: fixed;
-
+  display: none;
   .pop-window-close-btn {
     @include rt-close-btn;
   }

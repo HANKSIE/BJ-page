@@ -15,6 +15,7 @@
   height: 100vh;
   .confirm {
     @include pop;
+    @include center-layout;
     flex-direction: column;
     top: 0;
     min-width: 30vw;

@@ -1,6 +1,10 @@
 @import "../theme/default.scss";
 
 .dropdown {
+  position: relative;
+  .drop-btn {
+    cursor: pointer;
+  }
   .drop-list {
     display: none;
     position: absolute;
