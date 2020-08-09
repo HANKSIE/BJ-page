@@ -70,15 +70,14 @@ class Confirm {
       `<div class="${CONFIRM.CLOSE_BTN}"><i class="fas fa-times"></i></div>`
     );
     close.click(function () {
-      slideUpRemove(ref, 500);
-      unlock();
+      ref.fadeOut(300, () => {
+        ref.remove();
+        unlock();
+      });
     });
     ref.append(close);
 
-    //隱藏後淡入
-    ref.hide();
     ref.fadeIn("slow");
-
     lock();
 
     //沒有confirm-panel

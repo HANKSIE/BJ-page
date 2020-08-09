@@ -1,9 +1,7 @@
 import $ from "jquery";
 import { TOAST } from "../constant/css/className";
 import { TOAST_PANEL } from "../constant/css/id";
-import Animate from "../animations/animate";
-
-const { slideUpRemove } = Animate;
+import { slideUpRemove } from "../animations/animate";
 
 class Toast {
   static get NORMAL() {
