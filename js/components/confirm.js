@@ -77,9 +77,10 @@ class Confirm {
     });
     ref.append(close);
 
-    ref.fadeIn("slow");
+    ref.hide();
+    ref.fadeIn(500);
     lock();
-
+    
     //沒有confirm-panel
     if ($(`#${CONFIRM_PANEL}`).length < 1) {
       //新增confirm-panel
